@@ -2,6 +2,9 @@
 
 A study project for following along **WTTD** class.
 
+[![Build Status](https://travis-ci.org/danielgoncalves/eventex.svg?branch=master)](https://travis-ci.org/danielgoncalves/eventex)
+[![CodeFactor](https://www.codefactor.io/repository/github/danielgoncalves/eventex/badge)](https://www.codefactor.io/repository/github/danielgoncalves/eventex)
+
 ## How to start coding?
 
 1. Clone repository
