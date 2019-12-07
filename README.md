@@ -19,7 +19,7 @@ git clone git@github.com:danielgoncalves/eventex.git
 cd eventex
 python -m venv .eventex_venv
 source .eventex_venv/bin/activate
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
 cp contrib/env-sample .env
 python manage.py test
 ```
