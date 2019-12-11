@@ -1,3 +1,4 @@
+import uuid
 
 from datetime import datetime
 from django.test import TestCase
@@ -17,8 +18,12 @@ class SubscriptionModelTest(TestCase):
         self.assertTrue(Subscription.objects.exists())
 
     def test_created_at(self):
-        """Subscription must have an auto created_at attribute."""
+        """Subscription must have an auto ``created_at`` attribute."""
         self.assertIsInstance(self.obj.created_at, datetime)
+
+    def test_hash_id(self):
+        """Subscription must have an auto UUID4 ``hash_id`` attribute."""
+        self.assertIsInstance(self.obj.hash_id, uuid.UUID)
 
     def test_str(self):
         self.assertEqual('John Programmer', str(self.obj))

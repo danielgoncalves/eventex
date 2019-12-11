@@ -32,7 +32,7 @@ def create(request):
             'subscriptions/subscription_email.txt',
             {'subscription': subscription})
 
-    return HttpResponseRedirect('/inscricao/{}/'.format(subscription.pk))
+    return HttpResponseRedirect('/inscricao/{}/'.format(subscription.hash_id))
 
 
 def new(request):
@@ -40,8 +40,8 @@ def new(request):
     return render(request, 'subscriptions/subscription_form.html', context)
 
 
-def detail(request, pk):
-    subscription = get_object_or_404(Subscription, pk=pk)
+def detail(request, hash_id):
+    subscription = get_object_or_404(Subscription, hash_id=hash_id)
     context = {'subscription': subscription}
     template = 'subscriptions/subscription_detail.html'
     return render(request, template, context)
