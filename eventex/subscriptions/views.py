@@ -3,17 +3,23 @@ from django.core import mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
+from django.shortcuts import resolve_url as r
 from django.template.loader import render_to_string
 
 from .forms import SubscriptionForm
 from .models import Subscription
 
 
-def subscribe(request):
+def new(request):
     if request.method == 'POST':
         return create(request)
-    else:
-        return new(request)
+
+    return empty_form(request)
+
+
+def empty_form(request):
+    context = {'form': SubscriptionForm()}
+    return render(request, 'subscriptions/subscription_form.html', context)
 
 
 def create(request):
@@ -32,12 +38,8 @@ def create(request):
             'subscriptions/subscription_email.txt',
             {'subscription': subscription})
 
-    return HttpResponseRedirect('/inscricao/{}/'.format(subscription.hash_id))
-
-
-def new(request):
-    context = {'form': SubscriptionForm()}
-    return render(request, 'subscriptions/subscription_form.html', context)
+    url = r('subscriptions:detail', subscription.hash_id)
+    return HttpResponseRedirect(url)
 
 
 def detail(request, hash_id):
