@@ -18,8 +18,9 @@ class SubscriptionModelAdmin(admin.ModelAdmin):
             'phone',
             'cpf',
             'created_at',
-            'subscribed_today',)
-    list_filter = ('created_at',)
+            'subscribed_today',
+            'paid',)
+    list_filter = ('paid', 'created_at',)
 
     def subscribed_today(self, obj):
         return obj.created_at.date() == now().date()
@@ -29,4 +30,3 @@ class SubscriptionModelAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Subscription, SubscriptionModelAdmin)
-
