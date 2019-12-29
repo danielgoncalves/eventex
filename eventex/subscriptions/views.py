@@ -29,7 +29,7 @@ def create(request):
         context = {'form': form}
         return render(request, 'subscriptions/subscription_form.html', context)
 
-    subscription = Subscription.objects.create(**form.cleaned_data)
+    subscription = form.save()
 
     _send_mail(
             'Confirmação de inscrição',
