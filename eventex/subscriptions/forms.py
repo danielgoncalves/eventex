@@ -2,7 +2,6 @@ from django import forms
 from django.core.exceptions import ValidationError
 
 from .models import Subscription
-from .validators import validate_cpf
 
 
 class SubscriptionForm(forms.ModelForm):
