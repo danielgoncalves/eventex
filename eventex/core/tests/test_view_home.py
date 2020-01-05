@@ -39,3 +39,8 @@ class HomeTest(TestCase):
         """Must have a link to speakers section"""
         expected = 'href="{}#speakers"'.format(r('home'))
         self.assertContains(self.response, expected)
+
+    def test_talks_link(self):
+        """Must have a link to talks section"""
+        expected = 'href="{}"'.format(r('talk_list'))
+        self.assertContains(self.response, expected)
