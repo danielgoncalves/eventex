@@ -2,6 +2,7 @@ from django.db import models
 from django.shortcuts import resolve_url as r
 
 from .managers import KindQuerySet
+from .managers import PeriodManager
 
 
 class Speaker(models.Model):
@@ -55,6 +56,8 @@ class Talk(models.Model):
             'Speaker',
             blank=True,
             verbose_name='palestrantes')
+
+    objects = PeriodManager()
 
     class Meta:
         verbose_name = 'palestra'
